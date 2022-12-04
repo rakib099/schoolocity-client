@@ -4,12 +4,14 @@
 .links {
     text-decoration: none;
     color: black;
-    padding: 0.5rem;
+    padding:  0.5rem;
     font-weight: 600;
 }
 .active {
-    text-decoration-line: underline;
+    border: 1px solid #5c69b7;
+    border-radius: 8px;
+    /* text-decoration-line: underline;
     text-decoration-color: #5c69b7;
     text-decoration-style: solid;
-    text-decoration-thickness: 5px;
+    text-decoration-thickness: 5px; */
 }
