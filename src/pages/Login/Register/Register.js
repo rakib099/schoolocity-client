@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { Link, useNavigate } from 'react-router-dom';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+    const { createUser, updateUserProfile, providerLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -15,6 +25,51 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, photoURL, email, password);
+
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            handleUpdateProfile(name, photoURL);
+            form.reset();
+            toast.success("Successfully registered! Now you can log in.");
+        })
+        .catch(error => console.error(error));
+    }
+
+    const handleUpdateProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+
+        updateUserProfile(profile)
+        .then(() => {})
+        .catch(error => console.error(error));
+    }
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate("/");
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate("/");
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     return (
@@ -46,14 +101,21 @@ const Register = () => {
                 </Form.Text>
                 <button className='btn-submit' type='submit'>Register</button>
             </Form>
+
+
+            <p className='mt-2'>
+                <small>Already have an account? <Link to="/login">Click here to login!</Link></small>
+            </p>
+
+
             <div className='d-flex align-items-center mt-3'>
                 <hr className='w-25' />
                 <p className='flex-grow-1 text-secondary text-center m-0'><small>Or use one of these methods below</small></p>
                 <hr className='w-25' />
             </div>
             <div className="providers d-flex justify-content-center gap-3 mt-2">
-                <Button variant="outline-primary"> <FcGoogle /> Google</Button>
-                <Button variant="outline-dark"> <FaGithub /> Github</Button>
+                <Button onClick={handleGoogleSignIn} variant="outline-primary"> <FcGoogle /> Google</Button>
+                <Button onClick={handleGithubSignIn} variant="outline-dark"> <FaGithub /> Github</Button>
             </div>
         </Container>
     );

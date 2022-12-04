@@ -1,23 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Header.css';
-import { Button, NavDropdown } from 'react-bootstrap';
+import { Button, Image, NavDropdown } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../../resources/images/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { FaUserAlt } from 'react-icons/fa';
+import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [toggle, setToggle] = useState(false);
     const navigate = useNavigate();
 
     const handleSignOut = () => {
         logOut()
-        .then(() => {
-            navigate("/login");
-        })
-        .catch(error => console.error(error));
+            .then(() => {
+                navigate("/login");
+            })
+            .catch(error => console.error(error));
+    }
+
+    const handleToggle = () => {
+        setToggle(!toggle);     // toggling current value of toggle
     }
 
     return (
@@ -25,7 +32,7 @@ const Header = () => {
             <Container>
                 <Link className='navbar-brand' to="/">
                     <img src={logo} alt="logo" style={{ width: "70px" }} />
-                    <span className='fw-semibold brand'>Shoolocity</span>
+                    <span className='fw-semibold brand'>Schoolocity</span>
                 </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -35,21 +42,40 @@ const Header = () => {
                         <NavLink className="links" to="/blog">Blog</NavLink>
 
                     </Nav>
-                    <Nav>
+                    <Nav className='align-items-center'>
                         {
                             user?.uid ?
-                                <Link>
+                                <>
                                     <Button onClick={handleSignOut} variant="light">Log out</Button>
-                                </Link>
+                                    <div className='image-container' title={user?.displayName}>
+                                        {
+                                            user?.photoURL ?
+                                                <Image style={{ width: "40px", height: "40px" }} src={user.photoURL} alt="profile-pic" roundedCircle />
+                                                :
+                                                <FaUserAlt />
+                                        }
+                                    </div>
+                                </>
                                 :
                                 <>
                                     <NavLink className=" links" to="/login">Login</NavLink>
                                     <NavLink className="links" to="/register">Register</NavLink>
                                 </>
                         }
-                        <Nav.Link eventKey={2} href="#memes">
-                            {user?.displayName}
-                        </Nav.Link>
+                        <div className='toggle-container ms-3' onClick={handleToggle}>
+                            {
+                                toggle ?
+                                    <>
+                                        <BsToggleOn className='toggle' />
+                                        <p className="m-0"><small>Dark</small></p>
+                                    </>
+                                    :
+                                    <>
+                                        <BsToggleOff className='toggle' />
+                                        <p className="m-0"><small>Light</small></p>
+                                    </>
+                            }
+                        </div>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
