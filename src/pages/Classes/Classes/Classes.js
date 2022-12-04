@@ -7,29 +7,28 @@ import SideBar from '../SideBar/SideBar';
 
 const Classes = () => {
     const classes = useLoaderData();
-    console.log(classes);
 
     return (
-        <Container>
-            <Row>
-                <Col lg="3" className='bg-light'>
-                    <SideBar />
-                </Col>
-                <Col lg="9">
+        <Row>
+            <Col lg="3" className='bg-light'>
+                <SideBar />
+            </Col>
+            <Col lg="9">
+                <Container>
                     <div className='my-4'>
-                        <h3 className='mb-3 text-center classes-title'>Choose your desired class and enroll</h3>
+                        <h3 className='mb-4 text-center classes-title'>Choose your desired class and enroll</h3>
                         <Row xs={1} md={2} lg={3} className="g-4">
-                        {
-                            classes.map(cls => <ClassCard 
-                            key={cls.id}
-                            class={cls}
-                            />)
-                        }
+                            {
+                                classes.map(cls => <ClassCard
+                                    key={cls.id}
+                                    class={cls}
+                                />)
+                            }
                         </Row>
                     </div>
-                </Col>
-            </Row>
-        </Container>
+                </Container>
+            </Col>
+        </Row>
     );
 };
 

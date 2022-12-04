@@ -1,0 +1,8 @@
+.side-bar {
+    position: sticky;
+    top: 0;
+}
+.side-bar a {
+    text-decoration: none;
+    color: #5c69b7;
+}
