@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Login.css';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const {providerLogin} = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -15,6 +21,17 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+    }
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => {
+            console.error(error);
+        })
     }
 
     return (
@@ -45,7 +62,7 @@ const Login = () => {
                 <hr className='w-25' />
             </div>
             <div className="providers d-flex justify-content-center gap-3 mt-2">
-                <Button variant="outline-primary"> <FcGoogle /> Google</Button>
+                <Button onClick={handleGoogleSignIn} variant="outline-primary"> <FcGoogle /> Google</Button>
                 <Button variant="outline-dark"> <FaGithub /> Github</Button>
             </div>
         </Container>
