@@ -2,9 +2,15 @@ import React from 'react';
 import './ClassCard.css';
 import { Card, Col } from 'react-bootstrap';
 import { FaRegClock } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const ClassCard = (props) => {
     const { id, title, img, duration, price } = props.class;
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate(`/classes/${id}`);
+    }
 
     return (
         <Col>
@@ -21,7 +27,7 @@ const ClassCard = (props) => {
                         <Card.Text className='fw-semibold'>${price}</Card.Text>
                     </div>
                     <div className='btn-container text-center'>
-                        <button className='btn-details'>See Details</button>
+                        <button onClick={handleNavigate} className='btn-details'>See Details</button>
                     </div>
                 </Card.Body>
             </Card>

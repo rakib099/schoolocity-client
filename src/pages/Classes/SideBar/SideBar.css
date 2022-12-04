@@ -6,3 +6,6 @@
     text-decoration: none;
     color: #5c69b7;
 }
+.side-bar a:hover {
+    color: blue;
+}

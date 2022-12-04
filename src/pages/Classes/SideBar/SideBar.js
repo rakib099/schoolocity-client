@@ -19,6 +19,7 @@ const SideBar = () => {
             <h4 className='mb-3'>Available Classes</h4>
             {
                 categories.map(ct => <Link
+                    to={`/classes/${ct.id}`}
                     key={ct.id}>
                     <p>{ct.title}</p>
                 </Link>)
