@@ -1,0 +1,12 @@
+.error-title {
+    color: #5c69b7;
+}
+#error p {
+    color: mediumpurple;
+}
+#error span {
+    color: #f46969;
+}
+.return {
+    text-decoration: none;
+}
