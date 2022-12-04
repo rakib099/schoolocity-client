@@ -7,9 +7,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const {providerLogin} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -28,6 +30,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            navigate("/");
         })
         .catch(error => {
             console.error(error);
