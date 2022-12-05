@@ -1,14 +1,35 @@
 .class-details-container {
     border: 2px solid salmon;
 }
+.value {
+    color: #5c69b7;
+}
 
+/* Desktop Devices */
 @media screen and (min-width: 992px) {
     .course-info {
         height: 100% !important;
+        font-size: 26px;
+    }
+    .course-info-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
+
+
+/* Mobile Devices */
 @media screen and (max-width: 991px) {
+    .img-container {
+        text-align: center;
+    }
     .course-info {
         margin-top: 1rem;
+    }
+    .info-parts {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }

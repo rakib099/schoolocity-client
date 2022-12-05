@@ -3,7 +3,8 @@ import './ClassDetails.css';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import SideBar from '../Classes/SideBar/SideBar';
-import { FaRegClock } from 'react-icons/fa';
+import { FaRegClock, FaRegFileAlt, FaUserAlt } from 'react-icons/fa';
+import { GrMoney } from 'react-icons/gr';
 
 const ClassDetails = () => {
     const { id, img, title, description, duration, price, lessons, students } = useLoaderData();
@@ -18,17 +19,38 @@ const ClassDetails = () => {
                     <div className="class-details-container my-5">
                         <Row className='mb-2'>
                             <Col>
-                                <img src={img} alt="class-img" />
+                                <div className='img-container'>
+                                    <img src={img} alt="class-img" />
+                                </div>
                             </Col>
                             <Col>
                                 <Card className='course-info'>
-                                    <Card.Body>
-                                        <div className='d-flex justify-content-between mb-2'>
-                                            <div className='d-flex align-items-center text-secondary gap-1'>
-                                                <FaRegClock />
-                                                <span>{duration} hours</span>
+                                    <Card.Body className='course-info-body bg-light'>
+                                        <div>
+                                            <div className='info-parts'>
+                                                <div className='d-flex align-items-center mb-3'>
+                                                    <FaUserAlt />
+                                                    <span className='mx-2'>Students: </span>
+                                                    <span className='value'>{students}</span>
+                                                </div>
+                                                <div className='d-flex align-items-center mb-3'>
+                                                    <FaRegFileAlt />
+                                                    <span className='mx-2'>Lessons: </span>
+                                                    <span className='value'>{lessons}</span>
+                                                </div>
                                             </div>
-                                            <Card.Text className='fw-semibold'>${price}</Card.Text>
+                                            <div className='info-parts'>
+                                                <div className='d-flex align-items-center mb-3'>
+                                                    <GrMoney />
+                                                    <span className='mx-2'>Price:</span>
+                                                    <span className='value'>${price}</span>
+                                                </div>
+                                                <div className='d-flex align-items-center mb-3'>
+                                                    <FaRegClock />
+                                                    <span className='mx-2'>Duration: </span>
+                                                    <span className='value'>{duration} hours</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </Card.Body>
                                 </Card>
