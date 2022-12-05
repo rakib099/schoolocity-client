@@ -1,9 +1,9 @@
 import React from 'react';
 import './ClassDetails.css';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import SideBar from '../Classes/SideBar/SideBar';
-import { FaRegClock, FaRegFileAlt, FaUserAlt } from 'react-icons/fa';
+import { FaRegClock, FaRegFileAlt, FaRegFilePdf, FaUserAlt } from 'react-icons/fa';
 import { GrMoney } from 'react-icons/gr';
 
 const ClassDetails = () => {
@@ -57,10 +57,21 @@ const ClassDetails = () => {
                             </Col>
                         </Row>
 
-                        <h2>{title}</h2>
+                        <div className="heading d-flex align-itmes-center gap-3 mt-3 mb-2">
+                            <h2>{title}</h2>
+                            <span
+                                title='Download PDF'
+                                className='fs-4 download-pdf'>
+                                <FaRegFilePdf />
+                            </span>
+                        </div>
                         <p>{description || "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione dicta numquam eligendi voluptas minima esse minus fuga cumque a vitae blanditiis ut, quibusdam odit unde excepturi deleniti aliquam porro? Numquam quibusdam doloribus, totam voluptate autem nostrum, repellat optio nam iste cum expedita unde ad recusandae aut sapiente excepturi placeat ea."}</p>
+
+                        {/* Premium Access Button */}
                         <div className='btn-container text-center'>
-                            <button className='btn-details'>Get Premium Access</button>
+                            <Link to={`/class-${id}/checkout`}>
+                                <button className='btn-details'>Get Premium Access</button>
+                            </Link>
                         </div>
                     </div>
                 </Container>

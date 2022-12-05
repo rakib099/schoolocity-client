@@ -1,7 +1,13 @@
-.class-details-container {
+/* .class-details-container {
     border: 2px solid salmon;
-}
+} */
 .value {
+    color: #5c69b7;
+}
+.download-pdf {
+    cursor: pointer;
+}
+.download-pdf:hover {
     color: #5c69b7;
 }
 
