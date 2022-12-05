@@ -57,7 +57,7 @@ const Header = () => {
                                         user?.uid ?
                                             <>
                                                 <Button onClick={handleSignOut} variant="light">Log out</Button>
-                                                <div className='image-container' title={user?.displayName}>
+                                                <div className='image-container' title={user?.displayName || "Name Not Found"}>
                                                     {
                                                         user?.photoURL ?
                                                             <Image style={{ width: "40px", height: "40px" }} src={user.photoURL} alt="profile-pic" roundedCircle />

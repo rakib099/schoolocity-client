@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 
 const Register = () => {
     const { createUser, updateUserProfile, providerLogin } = useContext(AuthContext);
+    const [error, setError] = useState("");
     const [accepted, setAccepted] = useState(false);
     const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setError("");
 
         const form = event.target;
         const name = form.name.value;
@@ -35,7 +37,10 @@ const Register = () => {
             form.reset();
             toast.success("Successfully registered! Now you can log in.");
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            console.error(error);
+            setError(error.message);
+        });
     }
 
     const handleUpdateProfile = (name, photoURL) => {
@@ -58,6 +63,7 @@ const Register = () => {
             })
             .catch(error => {
                 console.error(error);
+                setError(error.message);
             })
     }
 
@@ -70,6 +76,7 @@ const Register = () => {
             })
             .catch(error => {
                 console.error(error);
+                setError(error.message);
             })
     }
 
@@ -105,8 +112,9 @@ const Register = () => {
                     label="Accept our Terms and Conditions" />
                 </Form.Group>
 
-                <Form.Text className="text-muted">
-                </Form.Text>
+                <p className="text-danger">
+                    {error}
+                </p>
                 <button className='btn-submit' type='submit' disabled={!accepted}>Register</button>
             </Form>
 

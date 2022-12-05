@@ -31,7 +31,7 @@ const CheckoutForm = () => {
 
     return (
         <Container className='checkout-form-container my-5'>
-            <h2 className='mb-3 login-title'>Please Fill out the form to proceed</h2>
+            <h2 className='mb-3 login-title'>Please fill out the form to proceed<br/>(Checkout Form)</h2>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Full Name</Form.Label>
