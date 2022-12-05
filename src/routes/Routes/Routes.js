@@ -8,6 +8,7 @@ import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import FAQ from "../../pages/FAQ/FAQ/FAQ";
 import Login from "../../pages/Login/Login/Login";
 import Register from "../../pages/Login/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -38,7 +39,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: "/class-:id/checkout",
-                element: <Checkout />,
+                element: <PrivateRoute> <Checkout /> </PrivateRoute>,
                 loader: ({ params }) => {
                     return fetch(`http://localhost:5000/classes/${params.id}`);
                 }

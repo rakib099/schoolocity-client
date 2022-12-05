@@ -17,7 +17,9 @@ const CheckoutForm = () => {
         const phone = form.phone.value;
         console.log(name, email, address, phone);
 
-        // form.reset();
+        form.reset();
+
+        // toast added on submission
         toast.success(`Thank you for submitting the form!`);
         toast(
             "You will be notified shortly about the enrollment!",

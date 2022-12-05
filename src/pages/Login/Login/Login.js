@@ -7,11 +7,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const {signIn, providerLogin} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -29,6 +31,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             form.reset();
+            navigate(from, { replace: true });
         })
         .catch(error => console.error(error));
     }
@@ -39,7 +42,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            navigate("/");
+            navigate(from, { replace: true });
         })
         .catch(error => {
             console.error(error);
@@ -51,7 +54,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            navigate("/");
+            navigate(from, { replace: true });
         })
         .catch(error => {
             console.error(error);
