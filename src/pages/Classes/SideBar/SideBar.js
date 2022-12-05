@@ -7,7 +7,7 @@ const SideBar = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:5000/categories')
+        fetch('https://schoolocity-server-side.vercel.app/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(error => console.error(error));

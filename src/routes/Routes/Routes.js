@@ -20,28 +20,28 @@ export const routes = createBrowserRouter([
                 path: "/",
                 element: <Classes />,
                 loader: () => {
-                    return fetch('http://localhost:5000/classes');
+                    return fetch('https://schoolocity-server-side.vercel.app/classes');
                 }
             },
             {
                 path: "/classes",
                 element: <Classes />,
                 loader: () => {
-                    return fetch('http://localhost:5000/classes');
+                    return fetch('https://schoolocity-server-side.vercel.app/classes');
                 }
             },
             {
                 path: "/classes/:id",
                 element: <ClassDetails />,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/classes/${params.id}`);
+                    return fetch(`https://schoolocity-server-side.vercel.app/classes/${params.id}`);
                 }
             },
             {
                 path: "/class-:id/checkout",
                 element: <PrivateRoute> <Checkout /> </PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/classes/${params.id}`);
+                    return fetch(`https://schoolocity-server-side.vercel.app/classes/${params.id}`);
                 }
             },
             {
