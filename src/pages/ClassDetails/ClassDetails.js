@@ -65,7 +65,8 @@ const ClassDetails = () => {
                                 <FaRegFilePdf />
                             </span>
                         </div>
-                        <p>{description || "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione dicta numquam eligendi voluptas minima esse minus fuga cumque a vitae blanditiis ut, quibusdam odit unde excepturi deleniti aliquam porro? Numquam quibusdam doloribus, totam voluptate autem nostrum, repellat optio nam iste cum expedita unde ad recusandae aut sapiente excepturi placeat ea."}</p>
+                        <p className='pe-4 text-justify'>This class is for curious kids out there who want to learn and explore new things. In this class they will learn about basic <span className='fw-semibold value'>{description}</span>. And they will be able to explore the fundamentals of <span className='fw-semibold value'>{description}</span>. This class designed in a way so that the kids can learn new things in a fun way! Thus, this class will push them to learn more about the unknown.</p>
+                        <p>If you are interested in this class and want your child to enroll in this class, please <span className='fw-semibold value'>click</span> the button below.</p>
 
                         {/* Premium Access Button */}
                         <div className='btn-container text-center'>

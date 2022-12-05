@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Website Link:
 
-Click 
+Click [https://schoolocity-90a09.web.app/](https://schoolocity-90a09.web.app/)
+Or  [https://schoolocity-90a09.firebaseapp.com/](https://schoolocity-90a09.firebaseapp.com/)
 
 ### Task Description:
 * Set React Router and created different routes for my website.
