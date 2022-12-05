@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Login.css';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
@@ -11,6 +11,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const {signIn, providerLogin} = useContext(AuthContext);
+    const [error, setError] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -24,16 +25,19 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
 
         signIn(email, password)
         .then(result => {
             const user = result.user;
             console.log(user);
             form.reset();
+            setError("");
             navigate(from, { replace: true });
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            console.error(error);
+            setError(error.message);
+        });
     }
 
 
@@ -42,10 +46,12 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            setError("");
             navigate(from, { replace: true });
         })
         .catch(error => {
             console.error(error);
+            setError(error.message);
         })
     }
 
@@ -54,10 +60,12 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            setError("");
             navigate(from, { replace: true });
         })
         .catch(error => {
             console.error(error);
+            setError(error.message);
         })
     }
 
@@ -75,12 +83,10 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name="password" placeholder="Password" required />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
 
-                <Form.Text className="text-muted">
-                </Form.Text>
+                <p className="text-danger">
+                    {error}
+                </p>
                 <button className='btn-submit' type='submit'>Login</button>
             </Form>
 

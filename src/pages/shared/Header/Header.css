@@ -15,6 +15,9 @@
     text-decoration-style: solid;
     text-decoration-thickness: 5px; */
 }
+.loader {
+    color: #5c69b7;
+}
 .image-container {
     cursor: pointer;
 }

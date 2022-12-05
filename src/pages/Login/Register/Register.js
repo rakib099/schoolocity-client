@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { Container } from 'react-bootstrap';
@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 
 const Register = () => {
     const { createUser, updateUserProfile, providerLogin } = useContext(AuthContext);
+    const [accepted, setAccepted] = useState(false);
     const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
@@ -72,6 +73,10 @@ const Register = () => {
             })
     }
 
+    const handleChecked = (e) => {
+        setAccepted(e.target.checked);
+    }
+
     return (
         <Container className='form-container my-4'>
             <h2 className='mb-3 login-title'>Please Register</h2>
@@ -94,12 +99,15 @@ const Register = () => {
                     <Form.Control type="password" name="password" placeholder="Password" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check 
+                    onClick={handleChecked}
+                    type="checkbox" 
+                    label="Accept our Terms and Conditions" />
                 </Form.Group>
 
                 <Form.Text className="text-muted">
                 </Form.Text>
-                <button className='btn-submit' type='submit'>Register</button>
+                <button className='btn-submit' type='submit' disabled={!accepted}>Register</button>
             </Form>
 
 

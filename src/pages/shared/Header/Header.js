@@ -11,9 +11,10 @@ import { FaUserAlt } from 'react-icons/fa';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, loading, logOut } = useContext(AuthContext);
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate();
+
 
     const handleSignOut = () => {
         logOut()
@@ -44,24 +45,39 @@ const Header = () => {
                     </Nav>
                     <Nav className='align-items-center'>
                         {
-                            user?.uid ?
-                                <>
-                                    <Button onClick={handleSignOut} variant="light">Log out</Button>
-                                    <div className='image-container' title={user?.displayName}>
-                                        {
-                                            user?.photoURL ?
-                                                <Image style={{ width: "40px", height: "40px" }} src={user.photoURL} alt="profile-pic" roundedCircle />
-                                                :
-                                                <FaUserAlt />
-                                        }
+                            !!loading ?
+                                <div className="d-flex justify-content-center loader">
+                                    <div className="spinner-border" role="status">
+                                        <span className="visually-hidden">Loading...</span>
                                     </div>
-                                </>
+                                </div>
                                 :
                                 <>
-                                    <NavLink className=" links" to="/login">Login</NavLink>
-                                    <NavLink className="links" to="/register">Register</NavLink>
+                                    {
+                                        user?.uid ?
+                                            <>
+                                                <Button onClick={handleSignOut} variant="light">Log out</Button>
+                                                <div className='image-container' title={user?.displayName}>
+                                                    {
+                                                        user?.photoURL ?
+                                                            <Image style={{ width: "40px", height: "40px" }} src={user.photoURL} alt="profile-pic" roundedCircle />
+                                                            :
+                                                            <FaUserAlt />
+                                                    }
+                                                </div>
+                                            </>
+                                            :
+                                            <>
+                                                <NavLink className=" links" to="/login">Login</NavLink>
+                                                <NavLink className="links" to="/register">Register</NavLink>
+                                            </>
+                                    }
                                 </>
+
                         }
+
+
+
                         <div className='toggle-container ms-3' onClick={handleToggle}>
                             {
                                 toggle ?
