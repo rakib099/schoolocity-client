@@ -72,8 +72,14 @@ const Details = ({ details }) => {
                                     <FaRegFilePdf />
                                 </span>
                             </div>
-                            <p className='pe-4 text-justify'>This class is for curious kids out there who want to learn and explore new things. In this class they will learn about basic <span className='fw-semibold value'>{description}</span>. And they will be able to explore the fundamentals of <span className='fw-semibold value'>{description}</span>. This class designed in a way so that the kids can learn new things in a fun way! Thus, this class will push them to learn more about the unknown.</p>
-                            <p>If you are interested in this class and want your child to enroll in this class, please <span className='fw-semibold value'>click</span> the button below.</p>
+
+                            <div className="class-description mb-4">
+                                <p className='pe-4 text-justify'>This class is for curious kids out there who want to learn and explore new things. In this class they will learn about basic <span className='fw-semibold value'>{description}</span>. And they will be able to explore the fundamentals of <span className='fw-semibold value'>{description}</span>. This class designed in a way so that the kids can learn new things in a fun way! Thus, this class will push them to learn more about the unknown.</p>
+
+                                <p className='pe-4 text-justify'>We have designed these classes for kids (aged 7 or older) to boost their knowledge and curiosity. Our ultimate target is to build our kid's mindset in such a way that they can explore the unknown world without being fearful. So, if it sounds interesting to you, you can enroll your kids in our classes.</p>
+
+                                <p>If you are interested in this class and want your child to enroll in this class, please <span className='fw-semibold value'>click</span> the button below.</p>
+                            </div>
 
                             {/* Premium Access Button */}
                             <div className='btn-container text-center'>

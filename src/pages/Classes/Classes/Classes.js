@@ -15,7 +15,7 @@ const Classes = () => {
             </Col>
             <Col lg="9">
                 <Container>
-                    <div className='my-4'>
+                    <div className='mt-4 mb-5'>
                         <h3 className='mb-4 text-center classes-title'>Choose your desired class and enroll</h3>
                         <Row xs={1} md={2} lg={3} className="g-4">
                             {
