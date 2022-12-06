@@ -1,0 +1,12 @@
+#sec-faq {
+    margin-bottom: 7.5rem;
+}
+.faq-title {
+    color: #5c69b7;
+}
+.accordion-button:focus {
+    box-shadow: none;
+}
+.accordion-button h5 {
+    color: #615f5f
+}

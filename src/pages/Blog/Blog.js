@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap';
 const Blog = () => {
     return (
         <Container className='mt-4 mb-5 questions-container'>
-            <h2 className='title mb-3'>Conceptual Questions</h2>
+            <h2 className='title mb-4'>Conceptual Questions</h2>
             <div className="questions">
                 <div className="question">
                     <h3>1. What is CORS?</h3>
