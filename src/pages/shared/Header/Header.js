@@ -42,6 +42,7 @@ const Header = () => {
                         <NavLink className=" links" to="/classes">Classes</NavLink>
                         <NavLink className=" links" to="/faq">FAQ</NavLink>
                         <NavLink className="links" to="/blog">Blog</NavLink>
+                        <NavLink className="links" to="/about">About</NavLink>
 
                     </Nav>
                     <Nav className='align-items-center'>

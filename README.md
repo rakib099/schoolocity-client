@@ -1,6 +1,6 @@
-# Shoolocity
+# Schoolocity
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Schoolocity is a learning platform for kids to enhance their capabilities and make them curious about exploring the unknown of the world. This platform is dedicated to setting your kid's mindset in such a way that, he/she can explore new eras of life without being fearful. So, come and join. Let's make our kid's future bright together!
 
 ## Live Website Link:
 
