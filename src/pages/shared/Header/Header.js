@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import './Header.css';
-import { Button, Image, NavDropdown } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -9,6 +9,7 @@ import logo from '../../../resources/images/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { FaUserAlt } from 'react-icons/fa';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
+import SideBar from '../../Classes/SideBar/SideBar';
 
 const Header = () => {
     const { user, loading, logOut } = useContext(AuthContext);
@@ -93,6 +94,9 @@ const Header = () => {
                             }
                         </div>
                     </Nav>
+                    <div className='d-lg-none'>
+                        <SideBar />
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

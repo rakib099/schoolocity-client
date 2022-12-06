@@ -10,7 +10,7 @@ const Classes = () => {
 
     return (
         <Row>
-            <Col lg="3" className='bg-light'>
+            <Col lg="3" className='bg-light d-none d-lg-block'>
                 <SideBar />
             </Col>
             <Col lg="9">
